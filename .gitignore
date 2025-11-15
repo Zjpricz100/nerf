@@ -1,0 +1,101 @@
+# Ignore Python cache and artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.ipynb_checkpoints/
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore large data directories
+data/images/test_lego_renders/
+data/test_images/
+data/test_images_object/
+data/nerf_data/
+models/
+
+# Ignore most results subdirectories with many images
+results/atat_test_renders_default/
+results/lafufu_test_renders_default_calibrated/
+results/lego_test_renders_default/
+results/lego_test_renders_default_val_run/
+
+# Ignore all JPG files in results root, but keep specific PNGs
+results/*.jpg
+results/*.jpeg
+
+# Keep specific PNG files in results root
+!results/atat_pose_frustrum.png
+!results/lufulu_pose_frustrum.png
+!results/frustrum.png
+!results/nerf_model_default.png
+!results/continuous_volrend.png
+!results/discrete_volrend.png
+!results/neural_img_model.png
+
+# Handle neural_image_results - ignore all, then keep specific subdirectories
+results/neural_image_results/*
+!results/neural_image_results/psnr.png
+!results/neural_image_results/fox_larger_results/
+results/neural_image_results/fox_larger_results/*
+!results/neural_image_results/fox_larger_results/fox_larger_n_layers=8_width=512_L=10_iter=100_lr=0.001.jpg
+!results/neural_image_results/fox_larger_results/fox_larger_n_layers=8_width=512_L=10_iter=250_lr=0.001.jpg
+!results/neural_image_results/fox_larger_results/fox_larger_n_layers=8_width=512_L=10_iter=500_lr=0.001.jpg
+!results/neural_image_results/fox_larger_results/fox_larger_n_layers=8_width=512_L=10_iter=1000_lr=0.001.jpg
+!results/neural_image_results/fox_larger_results/fox_larger_n_layers=8_width=512_L=10_iter=2000_lr=0.001.jpg
+!results/neural_image_results/fox_larger_results/fox_larger_n_layers=8_width=512_L=10_iter=3000_lr=0.001.jpg
+!results/neural_image_results/remi_paris_results/
+results/neural_image_results/remi_paris_results/*
+!results/neural_image_results/remi_paris_results/remi_paris_larger_n_layers=8_width=512_L=10_iter=100_lr=0.001.jpg
+!results/neural_image_results/remi_paris_results/remi_paris_larger_n_layers=8_width=512_L=10_iter=250_lr=0.001.jpg
+!results/neural_image_results/remi_paris_results/remi_paris_larger_n_layers=8_width=512_L=10_iter=500_lr=0.001.jpg
+!results/neural_image_results/remi_paris_results/remi_paris_larger_n_layers=8_width=512_L=10_iter=1000_lr=0.001.jpg
+!results/neural_image_results/remi_paris_results/remi_paris_larger_n_layers=8_width=512_L=10_iter=2000_lr=0.001.jpg
+!results/neural_image_results/remi_paris_results/remi_paris_larger_n_layers=8_width=512_L=10_iter=3000_lr=0.001.jpg
+!results/neural_image_results/remi_paris_results/remi_paris_larger_psnr_curve.png
+!results/neural_image_results/fox_small_L_results/
+results/neural_image_results/fox_small_L_results/*
+!results/neural_image_results/fox_small_L_results/fox_larger_n_layers=8_width=512_L=2_iter=3000_lr=0.001.jpg
+!results/neural_image_results/fox_small_width_results/
+results/neural_image_results/fox_small_width_results/*
+!results/neural_image_results/fox_small_width_results/fox_larger_n_layers=8_width=64_L=10_iter=3000_lr=0.001.jpg
+!results/neural_image_results/fox_small_results/
+results/neural_image_results/fox_small_results/*
+!results/neural_image_results/fox_small_results/fox_larger_n_layers=8_width=64_L=2_iter=3000_lr=0.001.jpg
+
+# Handle lego_test_renders_default_new_sampler - ignore all, then keep specific files
+results/lego_test_renders_default_new_sampler/*
+!results/lego_test_renders_default_new_sampler/iter=200.jpg
+!results/lego_test_renders_default_new_sampler/iter=500.jpg
+!results/lego_test_renders_default_new_sampler/iter=800.jpg
+!results/lego_test_renders_default_new_sampler/iter=1200.jpg
+!results/lego_test_renders_default_new_sampler/iter=1500.jpg
+!results/lego_test_renders_default_new_sampler/default_model_fixed_val.jpg
+
+# Handle spherical_render - ignore all JPGs, keep specific GIFs
+results/spherical_render/*.jpg
+results/spherical_render/*.jpeg
+!results/spherical_render/lego_spherical.gif
+!results/spherical_render/atat_spherical.gif
+!results/spherical_render/atat_spherical_4.gif
+
+# Handle plots - ignore all, then keep specific files
+results/plots/*
+!results/plots/atat_model_fixed.jpg
+!results/plots/atat_model_fixed_loss.jpg
+
+# Handle phone_images - ignore all, then keep specific files
+data/phone_images/tags/*
+!data/phone_images/tags/IMG_7030.jpeg
+data/phone_images/object/*
+!data/phone_images/object/IMG_6979.jpeg

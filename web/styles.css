@@ -1,0 +1,161 @@
+/* Reuse Project 2 styles for consistency */
+@import url("../../2/web/styles.css");
+
+/* Project 4 specific tweaks (if any) */
+.title {
+    letter-spacing: -0.02em;
+}
+
+.project-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.image-row {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: var(--spacing-lg) 0;
+}
+
+.image-row .image-container img {
+    max-width: 500px;
+}
+
+/* Utility: prevent wrap for single-line rows */
+.no-wrap {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+/* Training progression rows - larger images */
+.training-progress-row {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin: var(--spacing-lg) 0;
+    overflow-x: auto;
+    padding: var(--spacing-sm) 0;
+}
+
+.training-progress-row .image-container {
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+.training-progress-row .image-container img {
+    width: auto;
+    max-width: 500px;
+    min-width: 350px;
+    height: auto;
+}
+
+/* Large visualization images */
+.visualization-container {
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+}
+
+.visualization-container img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius);
+}
+
+/* Code snippets */
+.code-snippet {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    font-family: 'Courier New', monospace;
+    font-size: var(--font-size-sm);
+    overflow-x: auto;
+    line-height: 1.6;
+}
+
+/* Make GIFs larger in modal */
+.modal-content.gif-modal {
+    max-width: 95%;
+    max-height: 95%;
+    min-width: 600px;
+    width: auto;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .modal-content.gif-modal {
+        min-width: auto;
+        max-width: 98%;
+        max-height: 98%;
+    }
+}
+
+/* Hero GIF - Match Project 1's sizing */
+.gif-section {
+    text-align: center;
+    margin: var(--spacing-lg) 0 var(--spacing-2xl) 0;
+    min-height: 200px; /* Prevent layout shift */
+    scroll-margin-top: 100px; /* Account for sticky nav */
+}
+
+.gif-image {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    box-shadow: var(--shadow-md);
+}
+
+/* Section Navigation Bar */
+.section-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
+    margin: var(--spacing-lg) 0;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.section-nav .nav-link {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.section-nav .nav-link:hover {
+    background-color: #1b4332;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.section-nav .nav-link:active {
+    transform: translateY(0);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Account for sticky nav */
+}
+
+/* Offset for sticky nav */
+section[id] {
+    scroll-margin-top: 100px;
+}
+
