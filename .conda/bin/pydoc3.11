@@ -1,0 +1,5 @@
+#!/Users/zpricz/Documents/repos/fall2025/cs180/Zjpricz100/4/.conda/bin/python3.11
+
+import pydoc
+if __name__ == '__main__':
+    pydoc.cli()
