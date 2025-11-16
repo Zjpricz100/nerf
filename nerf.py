@@ -337,21 +337,23 @@ def test_volrend():
 
 
 
+def main():
 
+    # Note this visualizes with a larger s. Adjust s in the viusalize_rays function to change this.
 
+    images_train, c2ws_train, images_val, c2ws_val, c2ws_test, focal, K = parse_dataset("data/nerf_data/lego_200x200.npz")
+    H, W = images_train.shape[:2]
+    K = get_K(focal, focal, W / 2, H / 2)
+    visualize_rays(images_train, c2ws_train, K)
 
-# images_train, c2ws_train, images_val, c2ws_val, c2ws_test, focal = parse_dataset("data/nerf_data/lego_200x200.npz")
-# H, W = images_train.shape[:2]
-# K = get_K(focal, focal, W / 2, H / 2)
-# visualize_rays(images_train, c2ws_train, K)
+    dataset = RaysDataset(images_train, K, c2ws_train, train=True)
+    rays_o, rays_d, pixels = dataset.sample_rays(100) # Should expect (B, 3)
 
-# dataset = RaysDataset(images_train, K, c2ws_train, train=True)
-# rays_o, rays_d, pixels = dataset.sample_rays(100) # Should expect (B, 3)
+    points = sample_along_rays(rays_o, rays_d, perturb=True)
+    print(points.shape) 
+    
 
-# points = sample_along_rays(rays_o, rays_d, perturb=True)
-# print(points.shape) 
-
-
-
+if __name__ == "__main__":
+    main()
 
 
