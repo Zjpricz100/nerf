@@ -37,7 +37,6 @@ class RaysDataset(Dataset):
         image_indices = sampled_indices // (self.H * self.W)
         pixels_indices = sampled_indices % (self.H * self.W)
 
-        # Direct conversion: no unravel_index confusion!
         rows = pixels_indices // self.W  # v coordinate
         cols = pixels_indices % self.W   # u coordinate
 
