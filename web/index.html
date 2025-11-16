@@ -433,22 +433,59 @@
 
                 <p>After training the NeRF on the custom dataset, I rendered novel views from the scene to demonstrate the model's ability to synthesize new viewpoints of the ATAT walker. The trained model successfully captures the geometric structure and appearance of the object, allowing for realistic rendering from any camera angle.</p>
 
-                <h4>Spherical Renders</h4>
-                <p>Spherical renders showing the ATAT walker from complete 360-degree rotations:</p>
+                <h4>Hyperparameter Tuning</h4>
+                <p>For training the ATAT walker NeRF, the key hyperparameters that needed adjustment were the <code><strong>near</strong></code> and <code><strong>far</strong></code> bounds for ray sampling. These parameters define the depth range along each camera ray where we sample 3D points. The <code><strong>near</strong></code> parameter specifies the closest distance from the camera where we start sampling, while <code><strong>far</strong></code> specifies the farthest distance. These bounds are crucial because they determine which portion of 3D space the network learns to represent—if the bounds are too narrow, we might miss parts of the object, and if they're too wide, we waste computational resources on empty space.</p>
 
-                <div class="image-row">
-                    <div class="image-container">
-                        <img src="../results/spherical_render/atat_spherical.gif" alt="ATAT Spherical Render 1" class="gif-image clickable-image">
-                        <div class="image-caption">Spherical render of the ATAT walker scene</div>
-                    </div>
-                    <div class="image-container">
-                        <img src="../results/spherical_render/atat_spherical_4.gif" alt="ATAT Spherical Render 2" class="gif-image clickable-image">
-                        <div class="image-caption">Alternative spherical render of the ATAT walker scene</div>
-                    </div>
-                </div>
+                <p>For the ATAT walker dataset, I adjusted these bounds based on the actual distance and scale of the object relative to the camera positions. I used <code><strong>near = 0.0213</strong></code> and <code><strong>far = 0.2754</strong></code>, which are significantly smaller than the Lego scene values (near=2.0, far=6.0) due to the different scale and camera-to-object distance in my custom dataset. The other hyperparameters (network architecture, positional encoding frequency, learning rate, number of samples per ray) were kept the same as those used for the Lego NeRF to maintain consistency and leverage the same proven configuration.</p>
 
                 <h2>Results</h2>
-                <p>Below we show the training metrics and results for the ATAT walker NeRF model.</p>
+                <p>Below we show the training progression, metrics, and results for the ATAT walker NeRF model.</p>
+
+                <h3>Training Progression</h3>
+                <p>The following images show how the NeRF model improves over training iterations, gradually learning to represent the 3D structure and appearance of the ATAT walker scene:</p>
+
+                <div class="training-progress-row">
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=1000.jpg" alt="ATAT iter=1000" class="clickable-image">
+                        <div class="image-caption">Iteration 1000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=2000.jpg" alt="ATAT iter=2000" class="clickable-image">
+                        <div class="image-caption">Iteration 2000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=3000.jpg" alt="ATAT iter=3000" class="clickable-image">
+                        <div class="image-caption">Iteration 3000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=4000.jpg" alt="ATAT iter=4000" class="clickable-image">
+                        <div class="image-caption">Iteration 4000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=5000.jpg" alt="ATAT iter=5000" class="clickable-image">
+                        <div class="image-caption">Iteration 5000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=6000.jpg" alt="ATAT iter=6000" class="clickable-image">
+                        <div class="image-caption">Iteration 6000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=7000.jpg" alt="ATAT iter=7000" class="clickable-image">
+                        <div class="image-caption">Iteration 7000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=8000.jpg" alt="ATAT iter=8000" class="clickable-image">
+                        <div class="image-caption">Iteration 8000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=9000.jpg" alt="ATAT iter=9000" class="clickable-image">
+                        <div class="image-caption">Iteration 9000</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/atat_test_renders_default/iter=10000.jpg" alt="ATAT iter=10000" class="clickable-image">
+                        <div class="image-caption">Iteration 10000</div>
+                    </div>
+                </div>
 
                 <h3>Training Metrics</h3>
                 <p>The following plots show the PSNR and loss curves during training of the ATAT walker NeRF model:</p>
@@ -461,6 +498,20 @@
                     <div class="image-container">
                         <img src="../results/plots/atat_model_fixed_loss.jpg" alt="ATAT Loss Curve" class="clickable-image">
                         <div class="image-caption">Training loss progression during training on the ATAT walker dataset</div>
+                    </div>
+                </div>
+
+                <h4>Novel View Synthesis</h4>
+                <p>The trained NeRF model can render the ATAT walker scene from any viewpoint, including novel camera positions not present in the training data. Below are spherical renders showing the model's ability to synthesize views from complete 360-degree rotations:</p>
+
+                <div class="image-row">
+                    <div class="image-container">
+                        <img src="../results/spherical_render/atat_spherical.gif" alt="ATAT Spherical Render 1" class="gif-image clickable-image">
+                        <div class="image-caption">Spherical render of the ATAT walker scene</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="../results/spherical_render/atat_spherical_4.gif" alt="ATAT Spherical Render 2" class="gif-image clickable-image">
+                        <div class="image-caption">Alternative spherical render of the ATAT walker scene</div>
                     </div>
                 </div>
             </section>
